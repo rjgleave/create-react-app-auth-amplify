@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { withAuthenticator } from 'aws-amplify-react'
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify, { Auth, Storage } from 'aws-amplify';
 import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
+
+
+Storage.put('test.txt', 'Hello There')
+.then (result => console.log(result))
+.catch(err => console.log(err));
+
 class App extends Component {
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Rob Edit <code>src/App.js</code> and save to reload!!!!
+            Rob Edit <code>src/App.js</code> and save to reload ***
           </p>
           <a
             className="App-link"
